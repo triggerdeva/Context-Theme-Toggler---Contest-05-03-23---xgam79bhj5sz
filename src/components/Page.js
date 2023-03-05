@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { LocalThemedBox } from './LocalThemedBox';
+import { ThemeContext, ThemeProvider } from './ThemeProvider';
 
-const ThemeContext = React.createContext()
-const ThemeProvider = (props) =>{
-    const [theme, setTheme] = useState('light')
-    return (
-        <React.Fragment>
-            <ThemeContext.Provider value={{theme, setTheme}}>
-                {props.children}
-            </ThemeContext.Provider>
-        </React.Fragment>
+const Page = () => {
+
+    const {theme,setTheme} = useContext(ThemeContext);
+
+    return(
+        <div className={'bg-'+theme} id="themed-page">
+            <p id="themed-text-container" className={'txt-'+theme}>
+                lorem ipsum dolor iterit n stuff
+            </p>
+            {/* 'btn btn-'+theme 'txt-'+theme */}
+            <button className={`btn btn-${theme} txt-${theme}`} id="themed-button">Themed Button</button>
+           
+        <LocalThemedBox/>
+           
+        </div>
     )
 }
 
-export {ThemeProvider,ThemeContext}
+export { Page }
