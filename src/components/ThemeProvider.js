@@ -4,7 +4,7 @@ const ThemeContext = React.createContext()
 const ThemeProvider = (props) =>{
     
     const [state, setState] = useState({
-        theme: "light",
+        theme:"light",
     });
     const updateContext = (key,value) => {
         setState({
@@ -13,9 +13,8 @@ const ThemeProvider = (props) =>{
         });
     };
     return (
-        <ThemeContext.Provider value={{...state,
-        updateContext }}>
-        {props.childern}
+        <ThemeContext.Provider value={{...state,updateContext }}>
+        {props.children}
         </ThemeContext.Provider>
     )
 }
