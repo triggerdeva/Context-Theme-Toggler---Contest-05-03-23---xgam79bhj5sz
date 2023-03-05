@@ -1,24 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ThemeContext = React.createContext()
 const ThemeProvider = (props) =>{
-    
-    const [state, setState] = useState({
-        theme:"light",
-    });
-    const updateContext = (key,value) => {
-        setState({
-            ...state,
-            [key]:value,
-        });
-    };
+    const [theme, setTheme] = useState('light')
     return (
         <React.Fragment>
-        <ThemeContext.Provider value={{...state,updateContext }}>
-        {props.children}
-        </ThemeContext.Provider>
+            <ThemeContext.Provider value={{theme, setTheme}}>
+                {props.children}
+            </ThemeContext.Provider>
         </React.Fragment>
-
     )
 }
 
