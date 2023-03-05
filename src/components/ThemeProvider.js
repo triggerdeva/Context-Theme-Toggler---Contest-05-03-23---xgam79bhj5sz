@@ -13,9 +13,12 @@ const ThemeProvider = (props) =>{
         });
     };
     return (
+        <React.Fragment>
         <ThemeContext.Provider value={{...state,updateContext }}>
         {props.children}
         </ThemeContext.Provider>
+        </React.Fragment>
+
     )
 }
 
